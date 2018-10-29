@@ -16,15 +16,24 @@
 #
 ##############################################################################
 
-from openerp import models, api
+from openerp import models, api, fields
 
 
 class ResCountry(models.Model):
 
     _inherit = 'res.country'
 
+    validate_document_number = fields.Boolean(
+        string='Validar numero de documento',
+        help=(
+            "Tildar esta opcion para validar el documento de un partner asociado a este pais"
+        )
+    )
+
     @api.model
     def set_uy_vat_validation(self):
         self.env.ref('base.uy').validate_document_number = True
-        
+
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

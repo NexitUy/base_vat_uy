@@ -46,7 +46,7 @@
     'category': 'base',
 
     'depends': [
-        'base_vat_validation'
+        'base_vat'
     ],
 
     'data': [
@@ -55,7 +55,8 @@
         'data/partner_document_type_data.xml',
         'views/res_partner_view.xml',
         'views/res_company_view.xml',
-        'views/partner_document_type_view.xml'
+        'views/partner_document_type_view.xml',
+        'views/res_country_view.xml',
     ],
 
     'active': False,
