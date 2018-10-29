@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<openerp>
+    <data>
+
+        <record id='partner_document_type_ruc' model='partner.document.type'>
+            <field name='name'>RUC</field>
+            <field name="foo">validate_ruc</field>
+            <field name="verification_required">True</field>
+        </record>
+
+        <record id='partner_document_type_ci' model='partner.document.type'>
+            <field name='name'>C.I.</field>
+            <field name="foo">validate_ci</field>
+            <field name="verification_required">True</field>
+        </record>
+
+        <record id='partner_document_type_others' model='partner.document.type'>
+            <field name='name'>Otros</field>
+        </record>
+
+        <record id='partner_document_type_passport' model='partner.document.type'>
+            <field name='name'>Pasaporte</field>
+        </record>
+
+        <record id='partner_document_type_dni' model='partner.document.type'>
+            <field name='name'>DNI</field>
+        </record>
+
+        <record id='partner_document_type_nife' model='partner.document.type'>
+            <field name='name'>NIFE</field>
+        </record>
+
+    </data>
+</openerp>
+
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4-->

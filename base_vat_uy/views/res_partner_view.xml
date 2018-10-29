@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<openerp>
+    <data>
+    	
+    	<record model="ir.ui.view" id="res_partner_document_type_form">
+            <field name="name">Res partner document type form</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="child_ids" position="attributes">
+                    <attribute name="context">
+                        {'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_supplier': supplier, 'default_customer': customer, 'default_lang': lang,}
+                    </attribute>
+                </field>
+                <field name="function" position="before">
+                    <field name="partner_document_type_id" widget="selection"
+                        attrs="{'invisible': [('parent_id', '!=', False)]}"/>
+                    <field name="vat" string="Numero de documento"
+                           attrs="{'required': [('parent_id', '=', False),('partner_document_type_id', '!=', False)],
+                                   'invisible': [('parent_id', '!=', False)]}"/>
+                    <field name="verification_required" invisible="1"/>
+                </field>
+                <field name="street" position="attributes">
+                    <attribute name="attrs">
+                        {'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)],
+                         'required': [('verification_required', '=', True), ('parent_id', '=', False)]}
+                    </attribute>
+                </field>
+                <field name="state_id" position="attributes">
+                    <attribute name="attrs">
+                      {'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)],
+                       'required': [('verification_required', '=', True), ('parent_id', '=', False)]}
+                    </attribute>
+                </field>
+                <field name="city" position="attributes">
+                    <attribute name="attrs">
+                        {'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)],
+                         'required': [('verification_required', '=', True), ('parent_id', '=', False)]}
+                    </attribute>
+                </field>
+                <field name="country_id" position="attributes">
+                    <attribute name="attrs">
+                        {'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)],
+                         'required': [('partner_document_type_id', '!=', False)]}
+                    </attribute>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_invisible_vat_form">
+            <field name="name">Partner invisible vat</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_vat.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="replace"/>
+                <label for="vat" position="replace"/>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vat_number_partner_search">
+            <field name="name">Vat number partner search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="vat"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4-->
