@@ -41,9 +41,11 @@
 """,
     'author': 'NEXIT',
 
+    'license':'LGPL-3',
+
     'website': 'www.nexit.com.uy',
 
-    'category': 'base',
+    'category': 'Localization',
 
     'depends': [
         'base_vat'
@@ -56,7 +58,11 @@
         'views/res_partner_view.xml',
         'views/res_company_view.xml',
         'views/partner_document_type_view.xml',
-        'views/res_country_view.xml',
+        'views/res_country_view.xml'
+    ],
+
+    'images': [
+        'static/description/uruguay_cover.jpg',
     ],
 
     'active': False,
